@@ -18,9 +18,23 @@ var groups = [
   { 'id': 8, 'name': 'Octarine', 'confirmed': true }
 ];
 
-var group = function(groups){
-  /* your code here */
-}
+var group = function (groups) {
+  function prepareGroupPairs(groups, predicateFn) {
+    return _.filter(groups, predicateFn)
+        .map((g) => g.id)
+        .reduce((result, id, index) => {
+          if (index % 2 === 0) result[result.length] = [];
+
+          result[result.length - 1].push(id);
+          return result;
+        }, []);
+  }
+
+  return _.concat([],
+      prepareGroupPairs(groups, g => g.confirmed),
+      prepareGroupPairs(groups, g => !g.confirmed)
+  );
+};
 
 console.log( group(groups) );
 // [ [ [ 2, 5 ], [ 6, 7 ], [ 8 ] ], [ [ 1, 3 ], [ 4 ] ] ]

@@ -17,6 +17,12 @@ The function should return an array containing the messages themselves, without 
 
 */
 
-function getShortMessages(){
-  /* your code */
+function getShortMessagesThan(messages, lessThan){
+    return messages
+        .filter(m => m.message.length < lessThan)
+        .map(m => m.message);
+}
+
+function getShortMessages(messages){
+  return getShortMessagesThan(messages, 50);
 }

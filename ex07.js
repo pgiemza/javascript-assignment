@@ -15,3 +15,22 @@ Example
     // }
 
 */
+
+/*
+personally I prefer this way
+
+function countWords(words) {
+    return _.countBy(words);
+}
+ */
+
+function countWords(words) {
+    return words.reduce((result, word) => {
+        result[word] = result[word] ? result[word] + 1 : 1;
+        return result;
+    }, {});
+}
+
+var inputWords = ['Apple', 'Banana', 'Apple', 'Durian', 'Durian', 'Durian'];
+
+console.log(countWords(inputWords));

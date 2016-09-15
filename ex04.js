@@ -4,9 +4,7 @@
 // * Do not create any unnecessary functions e.g. helpers.
 
 function doubleAll(numbers) {
-  var result = []
-  for (var i = 0; i < numbers.length; i++) {
-    result.push(numbers[i] * 2)
-  }
-  return result
+  return (numbers || []).map(n => n * 2);
 }
+
+console.log(doubleAll([1,2,3,4])); //[ 2, 4, 6, 8 ]
